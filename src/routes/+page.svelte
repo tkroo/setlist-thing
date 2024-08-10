@@ -38,22 +38,26 @@
 <div class="cols">
 
   <div class="songlist">
-    <input type="text" bind:value={searchTerm} placeholder="search...">
+    <form>
+      <input type="search" bind:value={searchTerm} placeholder="search...">
+      <input type="reset" value="X" alt="Clear the search form" on:click={() => { searchTerm = ""}}>
+    </form>
+
     <header>
       <button on:click={() => sortMe('name')}>title</button>
       <button on:click={() => sortMe('length')}>duration</button>
       <button on:click={() => sortMe('tuning')}>tuning</button>
       <span> </span>
     </header>
-    {#each filtered as song}
-    <Song on:move={move} song={song} />
-    {/each}
-    <!-- <VerticalList on:move={move} items={songs}/> -->
-
+    <div class="innerlist">
+      {#each filtered as song}
+      <Song on:move={move} song={song} />
+      {/each}
+    </div>
+    
   </div>
 
   <div class="setlist">
-    <p>set list </p>
     <VerticalList2 on:move={move} items={setlist} />
   </div>
 </div>
@@ -78,8 +82,16 @@
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
     width: 100%;
-    padding: 0.5rem;
-    border-bottom: 1px solid #000;
+    padding: 0.5rem 0;
+  }
+
+  .innerlist {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    overflow: scroll;
+		/* min-height: 4rem; */
+    height: 70vh;
   }
 
 </style>

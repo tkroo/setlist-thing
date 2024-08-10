@@ -29,17 +29,19 @@
 
 </script>
 
+<div>
+	<span>{setDuration} total time</span>
+	{#if items.length}
+	<span>({items.length} song{items.length === 1 ? '' : 's'})</span>
+	{/if}
+</div>
 <header>
 	<button on:click={() => sortMe('name')}>title</button>
 	<button on:click={() => sortMe('length')}>length</button>
 	<button on:click={() => sortMe('tuning')}>tuning</button>
 </header>
-<p>{items.length} songs {setDuration}</p>
 <section use:dndzone={{items, flipDurationMs}} on:consider={handleDndConsider} on:finalize={handleDndFinalize}>
 	{#each items as item(item.id)}
-		<!-- <div animate:flip="{{duration: flipDurationMs}}">
-			{item.name}	
-		</div> -->
 		<div animate:flip="{{duration: flipDurationMs}}">
 			<Song on:move={() => { dispatch('move', {song:item})}} song={{id:item.id, name:item.name, tuning:item.tuning, length: item.length}} />
 		</div>
@@ -48,24 +50,19 @@
 
 <style>
 	section {
-		/* min-width: 100%; */
 		padding: 0.3em;
 		border: 1px solid black;
 		overflow: scroll;
 		min-height: 4rem;
-		/* height: 70vh; */
 	}
 	div {
-		/* width: 50%; */
 		padding: 0.2em;
-		/* border: 1px solid blue; */
 		margin: 0.15em 0;
 	}
 	header {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
     width: 100%;
-    padding: 0.5rem;
-    border-bottom: 1px solid #000;
+    padding: 0.5rem 0;
   }
 </style>
