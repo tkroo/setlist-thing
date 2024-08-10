@@ -10,7 +10,7 @@
 
 <button class="song btn" on:click={move}>
   <span class="title">{song.name}</span>
-  <span class="duration">{song.length}</span>
+  <span class="duration">{song.duration}</span>
   <span class="tuning">{song.tuning ? song.tuning : ''}</span>
   <!-- <button on:click={move}>move</button> -->
 </button>

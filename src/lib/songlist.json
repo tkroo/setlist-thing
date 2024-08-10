@@ -1,440 +1,416 @@
 [
 	{
-		"title": "Arrows",
-		"tracks": [
-			{
-				"name": "Take It Back",
-				"album": "Arrows",
-				"length": "02:00",
-        "tuning": "D"
-			},
-			{
-				"name": "Unreal Estate",
-				"album": "Arrows",
-				"length": "05:09",
-				"tuning": "D"
-			},
-			{
-				"name": "Arrows",
-				"album": "Arrows",
-				"length": "03:53",
-				"tuning": "D"
-			},
-			{
-				"name": "My Disaster",
-				"album": "Arrows",
-				"length": "01:56",
-				"tuning": "D"
-			},
-			{
-				"name": "Two High",
-				"album": "Arrows",
-				"length": "03:54",
-				"tuning": "D"
-			},
-			{
-				"name": "Anodyne",
-				"album": "Arrows",
-				"length": "03:35"
-			},
-			{
-				"name": "Fonzi Scheme",
-				"album": "Arrows",
-				"length": "04:13"
-			},
-			{
-				"name": "Days Collide",
-				"album": "Arrows",
-				"length": "05:44"
-			},
-			{
-				"name": "Rabbits in Hives",
-				"album": "Arrows",
-				"length": "01:36",
-				"tuning": "C"
-			},
-			{
-				"name": "Why",
-				"album": "Arrows",
-				"length": "03:08"
-			},
-			{
-				"name": "Dr. Owl",
-				"album": "Arrows",
-				"length": "03:33"
-			},
-			{
-				"name": "Funeral Coach",
-				"album": "Arrows",
-				"length": "03:25 "
-			}
-		]
+		"name": "Hank Is Dead",
+		"album": "Murder The Mountains",
+		"duration": "02:38",
+		"tuning": "C"
 	},
 	{
-		"title": "Stereo Nucleosis",
-		"tracks": [
-			{
-				"name": "Stereo Nucleosis",
-				"album": "Stereo Nucleosis",
-				"length": "02:59"
-			}
-		]
+		"name": "Dirt Wizard",
+		"album": "Murder The Mountains",
+		"duration": "02:59",
+		"tuning": "E"
 	},
 	{
-		"title": "Antidote",
-		"tracks": [
-			{
-				"name": "Antidote",
-				"album": "Antidote",
-				"length": "03:50",
-				"tuning": "D"
-			}
-		]
+		"name": "Throw Up",
+		"album": "Murder The Mountains",
+		"duration": "06:35",
+		"tuning": "C"
 	},
 	{
-		"title": "Listen To The Sirens",
-		"tracks": [
-			{
-				"name": "Listen To The Sirens",
-				"album": "Listen To The Sirens",
-				"length": "03:12",
-				"tuning": "E"
-			}
-		]
+		"name": "Blood Like Cream",
+		"album": "Whales And Leeches",
+		"duration": "03:33",
+		"tuning": "D"
 	},
 	{
-		"title": "Only Ghosts",
-		"tracks": [
-			{
-				"name": "Flies",
-				"album": "Only Ghosts",
-				"length": "03:37",
-				"tuning": "E"
-			},
-			{
-				"name": "Cut It Short",
-				"album": "Only Ghosts",
-				"length": "04:11",
-				"tuning": "E"
-			},
-			{
-				"name": "No Air",
-				"album": "Only Ghosts",
-				"length": "04:52",
-				"tuning": "D"
-			},
-			{
-				"name": "Shadows",
-				"album": "Only Ghosts",
-				"length": "03:11"
-			},
-			{
-				"name": "Not for You",
-				"album": "Only Ghosts",
-				"length": "03:19",
-				"tuning": "D"
-			},
-			{
-				"name": "The Smell of the Sound",
-				"album": "Only Ghosts",
-				"length": "05:23",
-				"tuning": "E"
-			},
-			{
-				"name": "The Deep",
-				"album": "Only Ghosts",
-				"length": "04:27"
-			},
-			{
-				"name": "I Am a Ghost",
-				"album": "Only Ghosts",
-				"length": "04:08"
-			},
-			{
-				"name": "Living in Lye",
-				"album": "Only Ghosts",
-				"length": "06:19"
-			},
-			{
-				"name": "Feeder",
-				"album": "Only Ghosts",
-				"length": "06:41"
-			},
-			{
-				"name": "Dumb Guy (instrumental)",
-				"album": "Only Ghosts",
-				"length": "03:12"
-			},
-			{
-				"name": "One Hit Two Hit (instrumental)",
-				"album": "Only Ghosts",
-				"length": "05:20"
-			}
-		]
+		"name": "Crows in Swine",
+		"album": "Whales And Leeches",
+		"duration": "03:01",
+		"tuning": "D"
 	},
 	{
-		"title": "Whales And Leeches",
-		"tracks": [
-			{
-				"name": "DOEN",
-				"album": "Whales And Leeches",
-				"length": "03:18",
-				"tuning": "C"
-			},
-			{
-				"name": "Blood Like Cream",
-				"album": "Whales And Leeches",
-				"length": "03:33",
-				"tuning": "D"
-			},
-			{
-				"name": "No Hope",
-				"album": "Whales And Leeches",
-				"length": "02:58"
-			},
-			{
-				"name": "Crows in Swine",
-				"album": "Whales And Leeches",
-				"length": "03:01",
-				"tuning": "D"
-			},
-			{
-				"name": "Voices of the Dead",
-				"album": "Whales And Leeches",
-				"length": "02:43"
-			},
-			{
-				"name": "Behind the Light",
-				"album": "Whales And Leeches",
-				"length": "02:44"
-			},
-			{
-				"name": "Dawn Rising",
-				"album": "Whales And Leeches",
-				"length": "07:01",
-				"tuning": "C"
-			},
-			{
-				"name": "Failure",
-				"album": "Whales And Leeches",
-				"length": "04:57"
-			},
-			{
-				"name": "1516",
-				"album": "Whales And Leeches",
-				"length": "03:37",
-				"tuning": "D"
-			},
-			{
-				"name": "This Animal",
-				"album": "Whales And Leeches",
-				"length": "02:42"
-			},
-			{
-				"name": "Every Little Twist",
-				"album": "Whales And Leeches",
-				"length": "04:40"
-			},
-			{
-				"name": "Murder the Mountains",
-				"album": "Whales And Leeches",
-				"length": "01:54"
-			},
-			{
-				"name": "Black Water",
-				"album": "Whales And Leeches",
-				"length": "04:40"
-			}
-		]
+		"name": "Arrows",
+		"album": "Arrows",
+		"duration": "03:53",
+		"tuning": "D"
 	},
 	{
-		"title": "Murder The Mountains",
-		"tracks": [
-			{
-				"name": "Malverde",
-				"album": "Murder The Mountains",
-				"length": "04:04",
-				"tuning": "D"
-			},
-			{
-				"name": "Wires",
-				"album": "Murder The Mountains",
-				"length": "05:45",
-				"tuning": "D"
-			},
-			{
-				"name": "Hank Is Dead",
-				"album": "Murder The Mountains",
-				"length": "02:38",
-				"tuning": "C"
-			},
-			{
-				"name": "Dirt Wizard",
-				"album": "Murder The Mountains",
-				"length": "02:59",
-				"tuning": "E"
-			},
-			{
-				"name": "Throw Up",
-				"album": "Murder The Mountains",
-				"length": "06:35",
-				"tuning": "C"
-			},
-			{
-				"name": "Painted Parade",
-				"album": "Murder The Mountains",
-				"length": "02:29"
-			},
-			{
-				"name": "Number Thirteen",
-				"album": "Murder The Mountains",
-				"length": "04:47",
-				"tuning": "E"
-			},
-			{
-				"name": "Into the Eye",
-				"album": "Murder The Mountains",
-				"length": "04:00",
-				"tuning": "D"
-			},
-			{
-				"name": "The Undertow",
-				"album": "Murder The Mountains",
-				"length": "05:04"
-			},
-			{
-				"name": "Human Herd",
-				"album": "Murder The Mountains",
-				"length": "03:51"
-			},
-			{
-				"name": "Over the Edge (Wipers cover)",
-				"album": "Murder The Mountains",
-				"length": "03:57"
-			},
-			{
-				"name": "Through (No Talent cover)",
-				"album": "Murder The Mountains",
-				"length": "04:41"
-			},
-			{
-				"name": "Pawn Everything",
-				"album": "Murder The Mountains",
-				"length": "01:25"
-			}
-		]
+		"name": "Prehistoric Dog",
+		"album": "Red Fang",
+		"duration": "04:28",
+		"tuning": "E"
 	},
 	{
-		"title": "Red Fang",
-		"tracks": [
-			{
-				"name": "Prehistoric Dog",
-				"album": "Red Fang",
-				"length": "04:28",
-				"tuning": "E"
-			},
-			{
-				"name": "Reverse Thunder",
-				"album": "Red Fang",
-				"length": "03:15",
-				"tuning": "E"
-			},
-			{
-				"name": "Night Destroyer",
-				"album": "Red Fang",
-				"length": "03:12",
-				"tuning": "D"
-			},
-			{
-				"name": "Humans Remain Human Remains",
-				"album": "Red Fang",
-				"length": "06:28",
-				"tuning": "E"
-			},
-			{
-				"name": "Good to Die",
-				"album": "Red Fang",
-				"length": "03:29",
-				"tuning": "E"
-			},
-			{
-				"name": "Bird on Fire",
-				"album": "Red Fang",
-				"length": "03:08",
-				"tuning": "E"
-			},
-			{
-				"name": "Wings of Fang",
-				"album": "Red Fang",
-				"length": "02:49"
-			},
-			{
-				"name": "Sharks",
-				"album": "Red Fang",
-				"length": "02:26",
-				"tuning": "E"
-			},
-			{
-				"name": "Whales and Leeches",
-				"album": "Red Fang",
-				"length": "04:21"
-			},
-			{
-				"name": "Witness",
-				"album": "Red Fang",
-				"length": "02:37"
-			},
-			{
-				"name": "Suicide (Dust cover)",
-				"album": "Red Fang",
-				"length": "02:37",
-				"tuning": "E"
-			}
-		]
+		"name": "Reverse Thunder",
+		"album": "Red Fang",
+		"duration": "03:15",
+		"tuning": "E"
 	},
 	{
-		"title": "Fools Rush In / Why",
-		"tracks": [
-			{
-				"name": "Only Fools Rush In",
-				"album": "Only Fools Rush In",
-				"length": "05:42"
-			}
-		]
+		"name": "Night Destroyer",
+		"album": "Red Fang",
+		"duration": "03:12",
+		"tuning": "D"
 	},
 	{
-		"title": "Meadows / Shadows",
-		"tracks": [
-			{
-				"name": "The Meadows",
-				"album": "The Meadows",
-				"length": "03:40"
-			},
-			{
-				"name": "The Shadows",
-				"album": "The Shadows",
-				"length": "03:34"
-			}
-		]
+		"name": "Humans Remain Human Remains",
+		"album": "Red Fang",
+		"duration": "06:28",
+		"tuning": "E"
 	},
 	{
-		"title": "Wires / LSP",
-		"tracks": [
-			{
-				"name": "LSP",
-				"album": "LSP",
-				"length": "03:40"
-			}
-		]
+		"name": "Good to Die",
+		"album": "Red Fang",
+		"duration": "03:29",
+		"tuning": "E"
 	},
 	{
-		"title": "Tour EP 3 (covers ep)",
-		"tracks": [
-			{
-				"name": "Carjack Fairy (Cherubs cover)",
-				"album": "Carjack Fairy (Cherubs cover)",
-				"length": "05:03"
-			}
-		]
+		"name": "Bird on Fire",
+		"album": "Red Fang",
+		"duration": "03:08",
+		"tuning": "E"
+	},
+	{
+		"name": "Wings of Fang",
+		"album": "Red Fang",
+		"duration": "02:49",
+		"tuning": "?"
+	},
+	{
+		"name": "Sharks",
+		"album": "Red Fang",
+		"duration": "02:26",
+		"tuning": "E"
+	},
+	{
+		"name": "Take It Back",
+		"album": "Arrows",
+		"duration": "02:00",
+		"tuning": "D"
+	},
+	{
+		"name": "Unreal Estate",
+		"album": "Arrows",
+		"duration": "05:09",
+		"tuning": "D"
+	},
+	{
+		"name": "My Disaster",
+		"album": "Arrows",
+		"duration": "01:56",
+		"tuning": "D"
+	},
+	{
+		"name": "Two High",
+		"album": "Arrows",
+		"duration": "03:54",
+		"tuning": "D"
+	},
+	{
+		"name": "Anodyne",
+		"album": "Arrows",
+		"duration": "03:35",
+		"tuning": "?"
+	},
+	{
+		"name": "Fonzi Scheme",
+		"album": "Arrows",
+		"duration": "04:13",
+		"tuning": "?"
+	},
+	{
+		"name": "Days Collide",
+		"album": "Arrows",
+		"duration": "05:44",
+		"tuning": "?"
+	},
+	{
+		"name": "Rabbits in Hives",
+		"album": "Arrows",
+		"duration": "01:36",
+		"tuning": "C"
+	},
+	{
+		"name": "Why",
+		"album": "Arrows",
+		"duration": "03:08",
+		"tuning": "?"
+	},
+	{
+		"name": "Dr. Owl",
+		"album": "Arrows",
+		"duration": "03:33",
+		"tuning": "?"
+	},
+	{
+		"name": "Funeral Coach",
+		"album": "Arrows",
+		"duration": "03:25",
+		"tuning": "?"
+	},
+	{
+		"name": "Stereo Nucleosis",
+		"album": "Stereo Nucleosis",
+		"duration": "02:59",
+		"tuning": "?"
+	},
+	{
+		"name": "Antidote",
+		"album": "Antidote",
+		"duration": "03:50",
+		"tuning": "D"
+	},
+	{
+		"name": "Listen To The Sirens",
+		"album": "Listen To The Sirens",
+		"duration": "03:12",
+		"tuning": "E"
+	},
+	{
+		"name": "Flies",
+		"album": "Only Ghosts",
+		"duration": "03:37",
+		"tuning": "E"
+	},
+	{
+		"name": "Cut It Short",
+		"album": "Only Ghosts",
+		"duration": "04:11",
+		"tuning": "E"
+	},
+	{
+		"name": "No Air",
+		"album": "Only Ghosts",
+		"duration": "04:52",
+		"tuning": "D"
+	},
+	{
+		"name": "Shadows",
+		"album": "Only Ghosts",
+		"duration": "03:11",
+		"tuning": "?"
+	},
+	{
+		"name": "Not for You",
+		"album": "Only Ghosts",
+		"duration": "03:19",
+		"tuning": "D"
+	},
+	{
+		"name": "The Smell of the Sound",
+		"album": "Only Ghosts",
+		"duration": "05:23",
+		"tuning": "E"
+	},
+	{
+		"name": "The Deep",
+		"album": "Only Ghosts",
+		"duration": "04:27",
+		"tuning": "?"
+	},
+	{
+		"name": "I Am a Ghost",
+		"album": "Only Ghosts",
+		"duration": "04:08",
+		"tuning": "?"
+	},
+	{
+		"name": "Living in Lye",
+		"album": "Only Ghosts",
+		"duration": "06:19",
+		"tuning": "?"
+	},
+	{
+		"name": "Feeder",
+		"album": "Only Ghosts",
+		"duration": "06:41",
+		"tuning": "?"
+	},
+	{
+		"name": "Dumb Guy (instrumental)",
+		"album": "Only Ghosts",
+		"duration": "03:12",
+		"tuning": "?"
+	},
+	{
+		"name": "One Hit Two Hit (instrumental)",
+		"album": "Only Ghosts",
+		"duration": "05:20",
+		"tuning": "?"
+	},
+	{
+		"name": "DOEN",
+		"album": "Whales And Leeches",
+		"duration": "03:18",
+		"tuning": "C"
+	},
+	{
+		"name": "No Hope",
+		"album": "Whales And Leeches",
+		"duration": "02:58",
+		"tuning": "?"
+	},
+	{
+		"name": "Voices of the Dead",
+		"album": "Whales And Leeches",
+		"duration": "02:43",
+		"tuning": "?"
+	},
+	{
+		"name": "Behind the Light",
+		"album": "Whales And Leeches",
+		"duration": "02:44",
+		"tuning": "?"
+	},
+	{
+		"name": "Dawn Rising",
+		"album": "Whales And Leeches",
+		"duration": "07:01",
+		"tuning": "C"
+	},
+	{
+		"name": "Failure",
+		"album": "Whales And Leeches",
+		"duration": "04:57",
+		"tuning": "?"
+	},
+	{
+		"name": "1516",
+		"album": "Whales And Leeches",
+		"duration": "03:37",
+		"tuning": "D"
+	},
+	{
+		"name": "This Animal",
+		"album": "Whales And Leeches",
+		"duration": "02:42",
+		"tuning": "?"
+	},
+	{
+		"name": "Every Little Twist",
+		"album": "Whales And Leeches",
+		"duration": "04:40",
+		"tuning": "?"
+	},
+	{
+		"name": "Murder the Mountains",
+		"album": "Whales And Leeches",
+		"duration": "01:54",
+		"tuning": "?"
+	},
+	{
+		"name": "Black Water",
+		"album": "Whales And Leeches",
+		"duration": "04:40",
+		"tuning": "?"
+	},
+	{
+		"name": "Malverde",
+		"album": "Murder The Mountains",
+		"duration": "04:04",
+		"tuning": "D"
+	},
+	{
+		"name": "Wires",
+		"album": "Murder The Mountains",
+		"duration": "05:45",
+		"tuning": "D"
+	},
+	{
+		"name": "Painted Parade",
+		"album": "Murder The Mountains",
+		"duration": "02:29",
+		"tuning": "?"
+	},
+	{
+		"name": "Number Thirteen",
+		"album": "Murder The Mountains",
+		"duration": "04:47",
+		"tuning": "E"
+	},
+	{
+		"name": "Into the Eye",
+		"album": "Murder The Mountains",
+		"duration": "04:00",
+		"tuning": "D"
+	},
+	{
+		"name": "The Undertow",
+		"album": "Murder The Mountains",
+		"duration": "05:04",
+		"tuning": "?"
+	},
+	{
+		"name": "Human Herd",
+		"album": "Murder The Mountains",
+		"duration": "03:51",
+		"tuning": "?"
+	},
+	{
+		"name": "Over the Edge (Wipers cover)",
+		"album": "Murder The Mountains",
+		"duration": "03:57",
+		"tuning": "E"
+	},
+	{
+		"name": "Through (No Talent cover)",
+		"album": "Murder The Mountains",
+		"duration": "04:41",
+		"tuning": "E"
+	},
+	{
+		"name": "Pawn Everything",
+		"album": "Murder The Mountains",
+		"duration": "01:25",
+		"tuning": "?"
+	},
+	{
+		"name": "Whales and Leeches",
+		"album": "Red Fang",
+		"duration": "04:21",
+		"tuning": "?"
+	},
+	{
+		"name": "Witness",
+		"album": "Red Fang",
+		"duration": "02:37",
+		"tuning": "?"
+	},
+	{
+		"name": "Suicide (Dust cover)",
+		"album": "Red Fang",
+		"duration": "02:37",
+		"tuning": "E"
+	},
+	{
+		"name": "Only Fools Rush In",
+		"album": "Only Fools Rush In",
+		"duration": "05:42",
+		"tuning": "?"
+	},
+	{
+		"name": "The Meadows",
+		"album": "The Meadows",
+		"duration": "03:40",
+		"tuning": "?"
+	},
+	{
+		"name": "The Shadows",
+		"album": "The Shadows",
+		"duration": "03:34",
+		"tuning": "?"
+	},
+	{
+		"name": "LSP",
+		"album": "LSP",
+		"duration": "03:40",
+		"tuning": "?"
+	},
+	{
+		"name": "Carjack Fairy (Cherubs cover)",
+		"album": "Carjack Fairy (Cherubs cover)",
+		"duration": "05:03",
+		"tuning": "?"
 	}
 ]

@@ -43,7 +43,7 @@
 <section use:dndzone={{items, flipDurationMs}} on:consider={handleDndConsider} on:finalize={handleDndFinalize}>
 	{#each items as item(item.id)}
 		<div animate:flip="{{duration: flipDurationMs}}">
-			<Song on:move={() => { dispatch('move', {song:item})}} song={{id:item.id, name:item.name, tuning:item.tuning, length: item.length}} />
+			<Song on:move={() => { dispatch('move', {song:item})}} song={{id:item.id, name:item.name, tuning:item.tuning, duration: item.duration}} />
 		</div>
 	{/each}
 </section>

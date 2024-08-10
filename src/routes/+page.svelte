@@ -2,10 +2,16 @@
   // import VerticalList from '$lib/dnd/VerticalList.svelte';
   import VerticalList2 from '$lib/dnd/VerticalList2.svelte';
   import Song from '$lib/Song2.svelte';
-  import songlist from "$lib/songlist-flat.json";
-  import { sortByKey } from '$lib/utils.js';
+  import songlist from "$lib/songlist.json";
+  import { sortByKey, writeFile } from '$lib/utils.js';
 
-  let songs = songlist;
+
+  let songs = [];
+  for (let i =0 ; i < songlist.length; i++) {
+    songs.push({id:i, ...songlist[i]});
+  }
+
+  // let songs = songlist;
   let setlist = [];
   let directionToggle = false;
 
@@ -33,7 +39,6 @@
 </script>
 
 
-
 <h1>setlist thing</h1>
 <div class="cols">
 
@@ -45,7 +50,7 @@
 
     <header>
       <button on:click={() => sortMe('name')}>title</button>
-      <button on:click={() => sortMe('length')}>duration</button>
+      <button on:click={() => sortMe('duration')}>duration</button>
       <button on:click={() => sortMe('tuning')}>tuning</button>
       <span> </span>
     </header>
@@ -59,6 +64,7 @@
 
   <div class="setlist">
     <VerticalList2 on:move={move} items={setlist} />
+    <button on:click={() => { writeFile(setlist, 'text/csv') }}>write to .csv</button>  
   </div>
 </div>
 
