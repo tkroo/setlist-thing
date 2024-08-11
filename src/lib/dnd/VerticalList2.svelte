@@ -30,10 +30,11 @@
 </script>
 
 <div>
-	<span>{setDuration} total time</span>
+	{#if setDuration}<span>{setDuration} total time</span>{/if}
 	{#if items.length}
 	<span>({items.length} song{items.length === 1 ? '' : 's'})</span>
 	{/if}
+	
 </div>
 <header>
 	<button on:click={() => sortMe('name')}>title</button>
@@ -47,22 +48,25 @@
 		</div>
 	{/each}
 </section>
+{#if items.length}<button on:click={() => items=[]}>clear list</button>{/if}
 
 <style>
 	section {
-		padding: 0.3em;
-		border: 1px solid black;
 		overflow: scroll;
 		min-height: 4rem;
+		background-color: #666;
 	}
+
 	div {
 		padding: 0.2em;
 		margin: 0.15em 0;
 	}
+	
 	header {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
     width: 100%;
     padding: 0.5rem 0;
+		gap: 0.5rem;
   }
 </style>
