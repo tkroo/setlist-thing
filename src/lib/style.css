@@ -1,0 +1,180 @@
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+#SETLISTPRINT {
+  display: none;
+}
+
+body {
+  background-color: #333;
+  color: #fff;
+  font-family: sans-serif;
+  line-height: 1.5;
+}
+
+.cols {
+  margin-top: 2rem;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.buttons-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttons-wrap>label,
+.buttons-wrap>button {
+  width: 100%;
+}
+
+.songlist,
+.setlist {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  /* border: 1px solid #ffcc00; */
+}
+
+header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+header h1 {
+  margin: 0;
+}
+
+.btns-wrapper {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  width: 100%;
+  padding: 0.5rem 0;
+  gap: 0.25rem;
+}
+
+.innerlist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  overflow: scroll;
+  height: 70vh;
+}
+
+.btn, .input::file-selector-button {
+  outline: 0;
+  font-family: inherit;
+  cursor: pointer;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  text-align: center;
+  line-height: inherit;
+  border: 1px solid;
+  border-radius: 0.25rem;
+  color: #000;
+  background-color: #eee;
+  border-color: #444;
+  transition: 0.3s ease-in-out;
+  transition-property: color, background-color, border-color;
+  margin: 0;
+}
+
+.btn, .input::file-selector-button:hover {
+  transition-duration: 0.2s;
+}
+
+#setlistinput, #songlistinput {
+  display: none;
+}
+
+/* .settings {
+  width: 100%;
+  position: relative;
+} */
+
+.btn:disabled {
+  background-color: transparent;
+  border-color: #888;
+  color: #888;
+  cursor: default;
+}
+
+.btn-square {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.25rem !important;
+  margin-left: auto;
+}
+
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+/* .prefs-wrapper {
+  position: relative;
+}
+.prefs {
+  position: absolute;
+  padding: 1rem 0.5rem;
+  top: 100%;
+  left: 0;
+  right: 0;
+  box-sizing: border-box;
+  border-radius: 0.25rem;
+  background-color: #ccc;
+  color: #000;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+} */
+
+/* svg {
+  max-width: 1rem;
+} */
+
+.btn:disabled {
+  background-color: #ccc;
+  cursor: default;
+}
+
+.btn-square {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem 0.25rem !important;
+}
+
+/* VERTICAL LIST */
+
+section {
+  margin: 1rem 0;
+  overflow: scroll;
+  /* min-height: 4rem; */
+  background-color: #666;
+}
+
+.inner {
+  padding: 0.2em;
+  margin: 0.15em 0;
+}
+.addsong-wrapper{
+  position: relative;
+}
+.addsongform {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.addsongform label {
+  font-size: 0.75rem;
+}
