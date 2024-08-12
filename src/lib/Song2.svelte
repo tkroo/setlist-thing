@@ -18,7 +18,6 @@
 <style>
   .song {
     display: grid;
-    /* grid-template-columns: repeat(4, 1fr); */
     grid-template-columns: 2fr 1fr 1fr;
     width: 100%;
     padding: 0.5rem;

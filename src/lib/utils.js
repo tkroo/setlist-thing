@@ -1,4 +1,5 @@
-import { DateTime, Duration } from 'luxon';
+import papa from 'papaparse';
+import { Duration } from 'luxon';
 
 
 export const getTotalDuration = (obj) => {
@@ -11,15 +12,9 @@ export const getTotalDuration = (obj) => {
 
 	if (totalSeconds == 0) return 0;
 
-	const dur = Duration.fromMillis(totalSeconds*1000);
-	// const totalDuration = DateTime.fromSeconds(totalSeconds).toFormat('mm:ss');
-	const totalDuration = dur.toFormat('hh:mm:ss');
-	const tmpArr = totalDuration.split(':')
-	const obby = {hours: tmpArr[0], minutes: tmpArr[1], seconds: tmpArr[2]}
-	const foox = Duration.fromObject(obby)
-	// console.log('foox: ', foox);
-	// const formattedDuration = foo[0] + 'hrs ' + foo[1] + 'mins ' + foo[2] + 'secs '
-	return foox.toHuman({unitDisplay: 'short', listStyle:'narrow'});
+	const dur = Duration.fromMillis(totalSeconds * 1000).shiftTo('hours', 'minutes', 'seconds', 'milliseconds').toObject();
+	return `${dur.hours ? dur.hours + 'h ' : ''} ${dur.minutes ? dur.minutes + 'm ' : ''} ${dur.seconds}s`;
+	// return '0m 0s'
 };
 
 export const sortByKey = (arr, key, ascdesc) => {
@@ -30,34 +25,16 @@ export const sortByKey = (arr, key, ascdesc) => {
 	}
 }
 
-const formatCSV = (obj) => {
-	let rows = `name,album,duration,tuning\n`;
-	obj.forEach((s) => {
-		rows += `${s.name},${s.album},${s.duration},${s.tuning}\n`;
+export const papaReadCSV = async (input) => {
+	return papa.parse(input, {
+		header: true,
+		skipEmptyLines: true
 	});
-	return rows
-}
-
-export const readCSV = (data) => {
-	const lines = data.split('\n').filter(x => x);
-	const keys = lines[0].split(',');
-
-	const output = lines.slice(1).map((line) => {
-		const values = line.split(',');
-		const obj = {};
-		keys.forEach((key, i) => {
-			obj[key] = values[i];
-		});
-		return obj;
-	});
-	console.log('readCSV: output', output)
-	return output
 }
 
 export const writeFile = (output, filename='untitled.csv', mimetype='text/csv') => {
-	const foo = formatCSV(output);
-	const output2 = foo
-	const blob = new Blob([output2], { type: mimetype });
+	const foo = papa.unparse(output);
+	const blob = new Blob([foo], { type: mimetype });
 	const url = URL.createObjectURL(blob);
 	const a = document.createElement('a');
 	a.href = url;
@@ -65,47 +42,21 @@ export const writeFile = (output, filename='untitled.csv', mimetype='text/csv') 
 	a.click();
 };
 
-// export const readFile = async (event) => {
-// 	const file = event.target.files[0];
-// 	console.log('readFile() ', file)
-// 	const reader = new FileReader();
 
-// 	reader.onload = async(event) => {
-// 		const data = event.target.result;
-// 		let tmp = readCSV(data);
-// 		console.log('tmp: ');
-// 		console.log(tmp);
-// 		if (tmp) {
-// 			return {
-// 				success:true,
-// 				data:tmp,
-// 				message: `loaded ${file.name}`
-// 			}
-// 		} else {
-// 			return {
-// 				success: false,
-// 				data: null,
-// 				message: `ERROR: expected CSV file ${file.name}`
-// 			};
-// 		}
-// 	}
-// 	reader.readAsText(file);
-// }
+export const printDiv = (element, useStyles = true) => {
+	const printStyles = useStyles
+		? `<head><style>body,html{height:100%}*,::after,::before{box-sizing:border-box}em{font-style:italic}body{width:100%;margin:0;padding:0;font-family:sans-serif;}ol{padding-top:1rem;}ul{padding-top:1rem;list-style-type:none; font-size: 48px;}</style></head>`
+		: '<head><style>body{ font-family:system-ui,sans-serif;font-size:12px;margin:1em;padding:0;}</style></head>';
 
-// export const readFile = (event) => {
-// 	const file = event.target.files[0];
-// 	const reader = new FileReader();
-// 	reader.onload = async(event) => {
-// 		const data = event.target.result;
-// 		let tmp = await detectThemeFormat(data, file);
-// 		if (tmp.file_type != 'unknown') {
-// 			message = `LOADED ${tmp.file_type} theme: '${file.name}'`;
-// 			success = true;
-// 			colors = tmp.colors;
-// 		} else {
-// 			success = false;
-// 			message = `ERROR: unexpected format ${tmp.file_type} ${file.name}`;
-// 		}
-// 	}
-// 	reader.readAsText(file);
-// }
+	const divContents = document.getElementById(element).innerHTML;
+	const a = window.open('', 'SETLIST', 'height=500,width=700');
+	// const a = window.open('', 'SETLIST');
+	if (!a) {
+		windowOpenError = true;
+	}
+	a.document.write(`<html>${printStyles}<body>${divContents}</body></html>`);
+	a.document.close();
+	setTimeout(function () {
+		a.print();
+	}, 1000);
+}

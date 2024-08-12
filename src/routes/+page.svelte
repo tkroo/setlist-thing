@@ -1,54 +1,64 @@
 <script>
-  // import VerticalList from '$lib/dnd/VerticalList.svelte';
   import VerticalList2 from '$lib/dnd/VerticalList2.svelte';
   import Song from '$lib/Song2.svelte';
-  import songlist from "$lib/songlist.json";
-  import { sortByKey, writeFile, readCSV, getTotalDuration } from '$lib/utils.js';
+  import AddSong from '$lib/AddSong.svelte';
+  import mainlist from "$lib/songlist.json";
+  import { setlist, songlist } from "$lib/stores.js";
+  import { onMount } from 'svelte';
+  import { sortByKey, writeFile, papaReadCSV, getTotalDuration, printDiv } from '$lib/utils.js';
 
-  let songs = [];
-  for (let i =0 ; i < songlist.length; i++) {
-    songs.push({id:i, ...songlist[i]});
-  }
+  // let songs = [];
+  // let setlist = [];
 
-  // let songs = songlist;
-  let setlist = [];
+  
+  onMount(() => {
+    $songlist = [...mainlist];
+    $songlist = $songlist.map((x, index) => ({id:index, ...x}));
+    // for (let i =0 ; i < mainlist.length; i++) {
+    //   $songlist.push({id:i, ...mainlist[i]});
+    // }
+  });
+
+
   let directionToggle = false;
 
-  function readFile(event) {
-  	const file = event.target.files[0];
-    console.log('readFile() ', file)
+  async function readFile(event, whichList) {
     const reader = new FileReader();
-
     reader.onload = async(event) => {
-      const data = event.target.result;
-      let tmp = readCSV(data);
-      let foo = [];
-      if (tmp) {
-        for (let i =0 ; i < tmp.length; i++) {
-          foo.push({id:i, ...tmp[i]});
-        }
-        console.log('foo: ',foo);
-        setlist = foo;
+      let tmp = await papaReadCSV(event.target.result);
+
+      if(whichList == 'setlist') {
+        $setlist = tmp.data.map((x, index) => ({id:index, ...x}));
+      } else {
+        $songlist = tmp.data.map((x, index) => ({id:index, ...x}));
       }
     }
+    const file = event.target.files[0];
     reader.readAsText(file);
   }
 
-
-
   function move(event) {
     const s = event.detail.song;
-    if (setlist.find(x => x.name === s.name)) {
-      setlist = setlist.filter(x => x.name !== s.name);
+    if ($setlist.find(x => x.name === s.name)) {
+      $setlist = $setlist.filter(x => x.name !== s.name);
       return;
     } else {
-      let song = songs.find(x => x.name === s.name);
-      setlist = [...setlist, song];
+      let song = $songlist.find(x => x.name === s.name);
+      $setlist = [...$setlist, song];
     }
   }
 
+  function addSong (obj) {
+    let id=$songlist.length+1;
+    $songlist = [{id:id, ...obj.detail.song}, ...$songlist];
+  }
+
+  // function moveAll() {
+  //   $setlist = [...$setlist, ...$songs];
+  // }
+
   let searchTerm = "";
-	$: filtered = songs.filter((x) => x.name.toLowerCase().includes(searchTerm.toLowerCase()));
+	$: filtered = $songlist.filter((x) => x.name.toLowerCase().includes(searchTerm.toLowerCase()));
   
   function sortMe(key) {
     directionToggle = !directionToggle
@@ -56,26 +66,35 @@
     filtered = tmp;
   }
 
-  $: fooDuration = getTotalDuration(setlist);
+  // $: fooDuration = getTotalDuration($setlist);
 
 </script>
 
 
 <h1>setlist thing</h1>
+<p>SET LENGTH: {getTotalDuration($setlist)} {$setlist.length} {$setlist.length === 1 ? 'song' : 'songs'}</p>
 <div class="cols">
 
   <div class="songlist">
-    <form>
-      <input type="search" name="search" bind:value={searchTerm} placeholder="search...">
+    <AddSong on:add={addSong} />
+    <label for="songlistinput" class="btn custom-file-load">load song list
+        <input
+        id="songlistinput"
+        type="file"
+        class="input"
+        name="songlistinput"
+        on:change={(e) => {readFile(e, 'songlist')}} />
+      </label>
+      <form>
+      <input type="search" name="search" bind:value={searchTerm} placeholder="filter...">
       <input type="reset" name="reset" value="X" alt="Clear the search form" on:click={() => { searchTerm = ""}}>
     </form>
-    
     <header>
       <button on:click={() => sortMe('name')}>title</button>
       <button on:click={() => sortMe('duration')}>duration</button>
       <button on:click={() => sortMe('tuning')}>tuning</button>
-      <span> </span>
     </header>
+    <!-- <button on:click={moveAll}>add all</button> -->
     <div class="innerlist">
       <small>click a song to add</small>
       {#each filtered as song}
@@ -86,24 +105,37 @@
   </div>
 
   <div class="setlist">
-    <VerticalList2 on:move={move} bind:items={setlist} />
     <div class="buttons-wrap">
-
-      <label for="file-load" class="btn custom-file-load">load setlist
+      <label for="setlistinput" class="btn custom-file-load">load setlist
         <input
-        id="file-load"
+        id="setlistinput"
         type="file"
         class="input"
-        name="file-load"
-        on:change={readFile} />
+        name="setlistinput"
+        on:change={(e) => {readFile(e, 'setlist')}} />
       </label>
-      <button class=".btn" disabled={!setlist.length} on:click={() => { writeFile(setlist, `set_${fooDuration}.csv`, 'text/csv') }}>save setlist</button>  
+      <button class=".btn" disabled={!setlist.length} on:click={() => { writeFile(setlist, `setlist.csv`, 'text/csv') }}>save setlist</button>  
     </div>
+    <button on:click={() => printDiv('SETLISTPRINT')}>print set list</button>
+    <VerticalList2 on:move={move} bind:items={$setlist} />
   </div>
+</div>
+
+<div id="SETLISTPRINT">
+  <ol>
+    {#each $setlist as song}
+    <li>{song.name}</li>
+    {/each}
+  </ol>
 </div>
 
 
 <style>
+
+  #SETLISTPRINT {
+    display: none;
+  }
+
   :global(body) {
     background-color: #333;
     color: #fff;
@@ -112,13 +144,12 @@
   .cols {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     gap: 2rem;
-    /* justify-content: space-between; */
   }
 
   .buttons-wrap {
     display: flex;
-    margin-top: 1rem;
     justify-content: space-between;
   }
   .buttons-wrap>label, .buttons-wrap>button {
@@ -130,6 +161,7 @@
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
+    /* border: 1px solid #ffcc00; */
   }
 
   header {
@@ -151,6 +183,7 @@
   .btn, .input::file-selector-button {
     /* display: inline-block; */
     outline: 0;
+    font-family: inherit;
     cursor: pointer;
     padding: 0.25rem 0.75rem;
     font-size: 0.75rem;
@@ -164,14 +197,14 @@
     border-color: #444;
     transition: 0.3s ease-in-out;
     transition-property: color, background-color, border-color;
-    margin: 0 6px 0 2px;
+    margin: 0;
   }
   .btn, .input::file-selector-button:hover {
     /* background-color: #666; */
     /* border-color: #666; */
     transition-duration: 0.2s;
   }
-  #file-load {
+  #setlistinput, #songlistinput {
     display: none;
   }
 

@@ -41,23 +41,28 @@
 	<button on:click={() => sortMe('length')}>length</button>
 	<button on:click={() => sortMe('tuning')}>tuning</button>
 </header>
-<section use:dndzone={{items, flipDurationMs}} on:consider={handleDndConsider} on:finalize={handleDndFinalize}>
-	{#each items as item(item.id)}
-		<div animate:flip="{{duration: flipDurationMs}}">
-			<Song on:move={() => { dispatch('move', {song:item})}} song={{id:item.id, name:item.name, tuning:item.tuning, duration: item.duration}} />
-		</div>
-	{/each}
-</section>
 {#if items.length}<button on:click={() => items=[]}>clear list</button>{/if}
+{#if items.length < 1}click a song to add{/if}
+{#if items.length}
+	<section use:dndzone={{items, flipDurationMs}} on:consider={handleDndConsider} on:finalize={handleDndFinalize}>
+		{#each items as item(item.id)}
+			<div class="inner" animate:flip="{{duration: flipDurationMs}}">
+				<Song on:move={() => { dispatch('move', {song:item})}} song={{id:item.id, name:item.name, tuning:item.tuning, duration: item.duration}} />
+			</div>
+		{/each}
+	</section>
+{/if}
+
 
 <style>
 	section {
+		margin: 1rem 0;
 		overflow: scroll;
-		min-height: 4rem;
+		/* min-height: 4rem; */
 		background-color: #666;
 	}
 
-	div {
+	.inner {
 		padding: 0.2em;
 		margin: 0.15em 0;
 	}
