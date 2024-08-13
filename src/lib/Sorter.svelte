@@ -9,7 +9,7 @@
 		let tmp = sortByKey(arr, key, directionToggle);
 		arr = [...tmp];
 	}
-  let keys = ['name', 'length', 'tuning'];
+  let keys = ['title', 'duration', 'tuning'];
 </script>
 
 

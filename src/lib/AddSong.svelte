@@ -1,6 +1,6 @@
 <script>
   import { songlist } from '$lib/stores.js';
-  let song ={name:'', duration:'00:00', tuning:''};
+  let song ={title:'', duration:'00:00', tuning:''};
   let toggle = false;
 
   function addSong () {
@@ -15,9 +15,9 @@
   </button>
   {#if toggle}
     <div class="addsongform">
-      <form on:submit={addSong}>
+      <!-- <form on:submit={addSong}> -->
         <label for="title">title:
-          <input type="text" name="title" bind:value={song.name} placeholder="title" />
+          <input type="text" name="title" bind:value={song.title} placeholder="title" />
         </label><br>
         <label for="duration">length:
           <input type="text" name="duration" bind:value={song.duration} placeholder="duration" />
@@ -25,8 +25,8 @@
         <label for="tuning">tuning:
           <input type="text" name="tuning" bind:value={song.tuning} placeholder="tuning" />
         </label>
-        <input type="submit" value="add">
-      </form>
+        <input type="submit" on:click={addSong} value="add">
+      <!-- </form> -->
     </div>
   {/if}
 </div>

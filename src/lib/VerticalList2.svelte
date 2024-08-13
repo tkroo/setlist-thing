@@ -28,11 +28,12 @@
 		<span>{setDuration} total time</span>
 		<span>({items.length} song{items.length === 1 ? '' : 's'})</span>	
 		<button class="btn" on:click={() => items=[]}>clear list</button>
+		<button class="btn" on:click={() => items=items.reverse()}>reverse list</button>
 		<Sorter bind:arr={items} />
 		<div class="innerlist" use:dndzone={{items, flipDurationMs}} on:consider={handleDndConsider} on:finalize={handleDndFinalize}>
 			{#each items as item(item.id)}
 				<!-- <div class="inner" animate:flip="{{duration: flipDurationMs}}"> -->
-					<Song on:move={() => { dispatch('move', {song:item})}} song={{id:item.id, name:item.name, tuning:item.tuning, duration: item.duration}} />
+					<Song on:move={() => { dispatch('move', {song:item})}} song={item} />
 				<!-- </div> -->
 			{/each}
 		</div>

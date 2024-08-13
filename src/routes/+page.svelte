@@ -3,29 +3,35 @@
   import Controls from '$lib/Controls.svelte';
   import Song from '$lib/Song2.svelte';
   import Sorter from "$lib/Sorter.svelte";
-  import Nav from '$lib/Nav.svelte';
+  import Info from "$lib/Info.svelte";
   import { setlist, songlist } from '$lib/stores.js';
   import { onMount } from 'svelte';
-  import { loadMainSongCSV, getTotalDuration } from '$lib/utils.js';  
+  import { loadMainSongCSV, getTotalDuration, formatTimeString } from '$lib/utils.js';  
   
   onMount(async () => {
     const msl = await loadMainSongCSV();
-    $songlist = msl.data.map((x, index) => ({id:index+999, ...x}));
+    $songlist = msl.data.map((x, index) => {
+      let id = index+999;
+      x.duration = x.duration.split(':')
+        .map(x => formatTimeString(x))
+        .join(":");
+      return {id, ...x}
+    });
   });
 
   function move(event) {
     const s = event.detail.song;
-    if ($setlist.find(x => x.name === s.name)) {
-      $setlist = $setlist.filter(x => x.name !== s.name);
+    if ($setlist.find(x => x.title === s.title)) {
+      $setlist = $setlist.filter(x => x.title !== s.title);
       return;
     } else {
-      let song = $songlist.find(x => x.name === s.name);
+      let song = $songlist.find(x => x.title === s.title);
       $setlist = [...$setlist, song];
     }
   }
 
   let searchTerm = "";
-	$: filtered = $songlist.filter((x) => x.name.toLowerCase().includes(searchTerm.toLowerCase()));
+	$: filtered = $songlist.filter((x) => x.title.toLowerCase().includes(searchTerm.toLowerCase()));
 
 </script>
 
@@ -33,7 +39,37 @@
 <header>
   <h1>setlist thing</h1>
   <Controls />
-  <Nav />
+  <Info>
+    <h2>info</h2>
+    <p>Files are saved as .csv files and look like:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>title</th>
+          <th>duration</th>
+          <th>tuning</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Song Title</td>
+          <td>03:45</td>
+          <td>E</td>
+        </tr>
+        <tr>
+          <td>Another Song Title</td>
+          <td>04:25</td>
+          <td>E</td>
+        </tr>
+        <tr>
+          <td>And Another Song Title</td>
+          <td>02:15</td>
+          <td>D</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </Info>
 </header>
 
 <div class="cols">
@@ -66,7 +102,7 @@
 <div id="SETLISTPRINT">
   <ol>
     {#each $setlist as song}
-    <li>{song.name}</li>
+    <li>{song.title}</li>
     {/each}
   </ol>
 </div>

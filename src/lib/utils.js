@@ -16,6 +16,12 @@ export const getTotalDuration = (obj) => {
 	return `${dur.hours ? dur.hours + 'h ' : ''} ${dur.minutes ? dur.minutes + 'm ' : ''} ${dur.seconds}s`;
 };
 
+export const formatTimeString = (timeString) => parseInt(timeString)
+	.toLocaleString('en-US', {
+		minimumIntegerDigits: 2,
+		// useGrouping: false
+	});
+
 export const sortByKey = (arr, key, ascdesc) => {
 	console.log('sortByKey', arr, key);
 	if(ascdesc) {

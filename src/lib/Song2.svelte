@@ -9,10 +9,9 @@
 </script>
 
 <button class="song btn" on:click={move}>
-  <span class="title">{song.name}</span>
+  <span class="title">{song.title}</span>
   <span class="duration">{song.duration}</span>
   <span class="tuning">{song.tuning ? song.tuning : ''}</span>
-  <!-- <button on:click={move}>move</button> -->
 </button>
 
 <style>
@@ -31,13 +30,8 @@
   }
 
   .btn {
-    /* display: inline-block; */
     outline: 0;
     cursor: pointer;
-    /* padding: 0.1rem 0.5rem; */
-    /* font-size: 0.75rem; */
-    /* font-weight: 400; */
-    /* line-height: inherit; */
     border: 1px solid transparent;
     border-radius: 0.25rem;
   }
