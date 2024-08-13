@@ -6,7 +6,7 @@
 </script>
 
 <div class="info-wrapper">
-  <button class="btn" on:click={toggleInfo}>info</button>
+  <button class="btn btn-link" on:click={toggleInfo}>info</button>
   {#if toggle}
     <div class="info-backdrop">
       <div class="info-inner">

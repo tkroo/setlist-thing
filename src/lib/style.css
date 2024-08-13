@@ -112,6 +112,13 @@ header h1 {
   margin-left: auto;
 }
 
+.btn-link {
+  background-color: transparent;
+  border-color: transparent;
+  color: #fff;
+  text-decoration: underline;
+}
+
 
 .controls {
   display: flex;

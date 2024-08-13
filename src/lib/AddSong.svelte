@@ -1,11 +1,16 @@
 <script>
   import { songlist } from '$lib/stores.js';
+  import { formatTimeString } from '$lib/utils.js';
   let song ={title:'', duration:'00:00', tuning:''};
   let toggle = false;
 
   function addSong () {
     let id=$songlist.length+1;
+    song.duration = song.duration.split(':')
+        .map(x => formatTimeString(x))
+        .join(":");
     $songlist = [{id:id, ...song}, ...$songlist];
+    toggle=false;
   }
 </script>
 

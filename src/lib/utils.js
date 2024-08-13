@@ -49,7 +49,9 @@ export const loadMainSongCSV = async () => {
 
 
 export const writeFile = (output, filename='untitled.csv', mimetype='text/csv') => {
-	const foo = papa.unparse(output);
+	const foo = papa.unparse(output, {
+		columns: ['title', 'duration', 'tuning'],
+	});
 	const blob = new Blob([foo], { type: mimetype });
 	const url = URL.createObjectURL(blob);
 	const a = document.createElement('a');
