@@ -11,7 +11,7 @@
   onMount(async () => {
     const msl = await loadMainSongCSV();
     $songlist = msl.data.map((x, index) => {
-      let id = index+999;
+      let id = index;
       x.duration = x.duration.split(':')
         .map(x => formatTimeString(x))
         .join(":");
@@ -21,11 +21,12 @@
 
   function move(event) {
     const s = event.detail.song;
-    if ($setlist.find(x => x.title === s.title)) {
-      $setlist = $setlist.filter(x => x.title !== s.title);
+    console.log('top level move() :',s);
+    if ($setlist.find(x => x.id === s.id)) {
+      $setlist = $setlist.filter(x => x.id !== s.id);
       return;
     } else {
-      let song = $songlist.find(x => x.title === s.title);
+      let song = $songlist.find(x => x.id === s.id);
       $setlist = [...$setlist, song];
     }
   }
@@ -39,37 +40,7 @@
 <header>
   <h1>setlist thing</h1>
   <Controls />
-  <Info>
-    <h2>info</h2>
-    <p>Files are saved as .csv files and look like:</p>
-    <table>
-      <thead>
-        <tr>
-          <th>title</th>
-          <th>duration</th>
-          <th>tuning</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Song Title</td>
-          <td>03:45</td>
-          <td>E</td>
-        </tr>
-        <tr>
-          <td>Another Song Title</td>
-          <td>04:25</td>
-          <td>E</td>
-        </tr>
-        <tr>
-          <td>And Another Song Title</td>
-          <td>02:15</td>
-          <td>D</td>
-        </tr>
-      </tbody>
-    </table>
-
-  </Info>
+  <Info />
 </header>
 
 <div class="cols">

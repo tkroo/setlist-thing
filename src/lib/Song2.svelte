@@ -4,6 +4,7 @@
 
   const dispatch = createEventDispatcher();
   function move() {
+    console.log('Song2 component', song);
     dispatch("move", { song });
   }
 </script>
