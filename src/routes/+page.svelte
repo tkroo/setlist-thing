@@ -57,13 +57,6 @@
   </div>
 
   <div class="setlist">
-  <p>
-  {#if $setlist.length}
-  set length: {getTotalDuration($setlist)} ({$setlist.length} {$setlist.length === 1 ? 'song' : 'songs'})
-  {:else}
-  click a song in the song list to start a set list
-  {/if}
-  </p>
     <VerticalList2 on:move={move} bind:items={$setlist} />
   </div>
 </div>

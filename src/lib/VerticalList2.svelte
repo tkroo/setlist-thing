@@ -23,12 +23,19 @@
 
 </script>
 
+<p class="nomnop">
+	{#if items.length}
+	set length: {getTotalDuration(items)} ({items.length} {items.length === 1 ? 'song' : 'songs'})
+	<button class="btn" on:click={() => items=[]}>clear</button>
+	<button class="btn" on:click={() => items=items.reverse()}>reverse</button>
+	{:else}
+	click a song in the song list to start a set list
+	{/if}
+</p>
 {#if items.length}
-	<div transition:fade={{ delay: 250, duration: 300 }}>
+	<div class="nomnop" transition:fade={{ delay: 250, duration: 300 }}>
 		<!-- <span>{setDuration} total time</span>
 		<span>({items.length} song{items.length === 1 ? '' : 's'})</span> -->
-		<button class="btn" on:click={() => items=[]}>clear</button>
-		<button class="btn" on:click={() => items=items.reverse()}>reverse</button>
 		<Sorter bind:arr={items} />
 		<div class="innerlist" use:dndzone={{items, flipDurationMs}} on:consider={handleDndConsider} on:finalize={handleDndFinalize}>
 			{#each items as item(item.id)}
@@ -39,3 +46,10 @@
 		</div>
 	</div>
 {/if}
+
+<style>
+	.nomnop {
+    margin: 0;
+    padding: 0;
+  }
+</style>

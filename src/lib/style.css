@@ -67,6 +67,7 @@ header h1 {
   gap: 0.25rem;
   overflow: scroll;
   height: 70vh;
+  margin-top: 0.25rem;
 }
 
 .btn, .input::file-selector-button {
