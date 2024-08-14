@@ -239,3 +239,6 @@ td {
     gap: 0.25rem;
   }
 }
+.heading {
+  height: 2.5rem;
+}

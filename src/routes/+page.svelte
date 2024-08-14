@@ -1,5 +1,6 @@
 <script>
   import VerticalList2 from '$lib/VerticalList2.svelte';
+  import { fade } from 'svelte/transition';
   import Controls from '$lib/Controls.svelte';
   import Song from '$lib/Song2.svelte';
   import Sorter from "$lib/Sorter.svelte";
@@ -43,16 +44,20 @@
 
 <div class="cols">
   <div class="songlist">
-    <form>
+    <div class="heading">
       <input class="btn wide" type="search" name="search" bind:value={searchTerm} placeholder="search for a song">
-      <input class="btn" type="reset" name="reset" value="X" alt="Clear the search form" on:click={() => { searchTerm = ""}}>
-    </form>
-    <Sorter bind:arr={$songlist} />
-    <div class="innerlist">
-      {#each filtered as song}
-        <Song on:move={move} song={song} />
-      {/each}
+      <input class="btn" type="reset" name="reset" value="X" alt="Clear the search vid" on:click={() => { searchTerm = ""}}>
     </div>
+    {#if filtered.length}
+    <div class="nomnop" transition:fade={{ delay: 250, duration: 300 }}>
+      <Sorter bind:arr={$songlist} />
+      <div class="innerlist">
+        {#each filtered as song}
+          <Song on:move={move} song={song} />
+        {/each}
+      </div>
+    </div>
+    {/if}
     
   </div>
 
