@@ -16,16 +16,6 @@
 </button>
 
 <style>
-  .song {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    width: 100%;
-    padding: 0.5rem;
-    background-color: #b1edfc;
-    color: #000;
-    border-radius: 0.5rem;
-  }
-
   .title {
     text-align: left;
   }

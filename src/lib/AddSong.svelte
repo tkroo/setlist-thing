@@ -1,14 +1,12 @@
 <script>
   import { songlist } from '$lib/stores.js';
-  import { formatTimeString } from '$lib/utils.js';
+  import { formatDuration } from '$lib/utils.js';
   let song ={title:'', duration:'00:00', tuning:''};
   let toggle = false;
 
   function addSong () {
     let id=$songlist.length+1;
-    song.duration = song.duration.split(':')
-        .map(x => formatTimeString(x))
-        .join(":");
+    song.duration = formatDuration(song.duration);
     $songlist = [{id:id, ...song}, ...$songlist];
     toggle=false;
   }
@@ -16,7 +14,7 @@
 
 <div class="addsong-wrapper">
   <button class="btn" title="this will add a new song to the songs list" on:click={() => toggle = !toggle}>
-    {toggle ? 'close' : 'add new song'}
+    {toggle ? 'close' : 'new song'}
   </button>
   {#if toggle}
     <div class="addsongform">

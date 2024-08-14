@@ -16,7 +16,14 @@ export const getTotalDuration = (obj) => {
 	return `${dur.hours ? dur.hours + 'h ' : ''} ${dur.minutes ? dur.minutes + 'm ' : ''} ${dur.seconds}s`;
 };
 
-export const formatTimeString = (timeString) => parseInt(timeString)
+export const formatDuration = (timeString) => {
+	return timeString
+		.split(':')
+		.map((x) => padZeros(x))
+		.join(':');
+}
+
+export const padZeros = (timeString) => parseInt(timeString)
 	.toLocaleString('en-US', {
 		minimumIntegerDigits: 2,
 		// useGrouping: false

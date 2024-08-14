@@ -6,15 +6,13 @@
   import Info from "$lib/Info.svelte";
   import { setlist, songlist } from '$lib/stores.js';
   import { onMount } from 'svelte';
-  import { loadMainSongCSV, getTotalDuration, formatTimeString } from '$lib/utils.js';  
+  import { loadMainSongCSV, getTotalDuration, formatDuration } from '$lib/utils.js';  
   
   onMount(async () => {
     const msl = await loadMainSongCSV();
     $songlist = msl.data.map((x, index) => {
       let id = index;
-      x.duration = x.duration.split(':')
-        .map(x => formatTimeString(x))
-        .join(":");
+      x.duration = formatDuration(x.duration)
       return {id, ...x}
     });
   });
@@ -59,13 +57,13 @@
   </div>
 
   <div class="setlist">
-    <p>
+  <p>
   {#if $setlist.length}
   set length: {getTotalDuration($setlist)} ({$setlist.length} {$setlist.length === 1 ? 'song' : 'songs'})
   {:else}
   click a song in the song list to start a set list
   {/if}
-</p>
+  </p>
     <VerticalList2 on:move={move} bind:items={$setlist} />
   </div>
 </div>
@@ -80,11 +78,11 @@
 
 
 <style>
-  form {
+  /* form {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
+  } */
   .wide {
     cursor: text;
     text-align: left;

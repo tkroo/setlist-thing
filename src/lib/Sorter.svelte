@@ -13,7 +13,7 @@
 </script>
 
 
-<div class="btns-wrapper">
+<div class="sorter-wrapper">
   {#each keys as k}
     <button class="btn" on:click={() => sortMe(k)} title="sort by {k}">{k}</button>
   {/each}

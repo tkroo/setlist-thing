@@ -31,10 +31,9 @@
     name="setlistinput"
     on:change={(e) => {readFile(e, 'setlist')}} />
   </label>
-  <button class="btn" disabled={!$setlist.length} on:click={() => { writeFile($setlist, `setlist.csv`, 'text/csv') }} title="this saves the current setlist in a .csv file">save setlist</button>
-  <button class="btn" disabled={!$setlist.length} on:click={() => printDiv('SETLISTPRINT')} title="this will print the current setlist (experimental)">print set list</button>
-  <AddSong />
-  <label for="songlistinput" class="btn custom-file-load" title="this will replace the list of songs to choose from">load a list of songs
+  <button class="btn" disabled={!$setlist.length} on:click={() => { writeFile($setlist, `setlist.csv`, 'text/csv') }} title="this saves the current setlist in a .csv file">save</button>
+  <button class="btn" disabled={!$setlist.length} on:click={() => printDiv('SETLISTPRINT')} title="this will print the current setlist (experimental)">print</button>
+  <label for="songlistinput" class="btn custom-file-load" title="this will replace the list of songs to choose from">load song list
     <input
     id="songlistinput"
     type="file"
@@ -42,6 +41,7 @@
     name="songlistinput"
     on:change={(e) => {readFile(e, 'songlist')}} />
   </label>
+  <AddSong />
   <!-- <button on:click={moveAll}>add all</button> -->
 </div>
 

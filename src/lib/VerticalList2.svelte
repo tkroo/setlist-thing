@@ -25,10 +25,10 @@
 
 {#if items.length}
 	<div transition:fade={{ delay: 250, duration: 300 }}>
-		<span>{setDuration} total time</span>
-		<span>({items.length} song{items.length === 1 ? '' : 's'})</span>	
-		<button class="btn" on:click={() => items=[]}>clear list</button>
-		<button class="btn" on:click={() => items=items.reverse()}>reverse list</button>
+		<!-- <span>{setDuration} total time</span>
+		<span>({items.length} song{items.length === 1 ? '' : 's'})</span> -->
+		<button class="btn" on:click={() => items=[]}>clear</button>
+		<button class="btn" on:click={() => items=items.reverse()}>reverse</button>
 		<Sorter bind:arr={items} />
 		<div class="innerlist" use:dndzone={{items, flipDurationMs}} on:consider={handleDndConsider} on:finalize={handleDndFinalize}>
 			{#each items as item(item.id)}
