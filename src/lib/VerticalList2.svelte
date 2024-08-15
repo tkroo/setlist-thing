@@ -37,7 +37,7 @@
 		<Sorter bind:arr={items} />
 		<div class="innerlist" use:dndzone={{items, flipDurationMs}} on:consider={handleDndConsider} on:finalize={handleDndFinalize}>
 			{#each items as item(item.id)}
-				<Song on:move={() => { dispatch('move', {song:item})}} song={item} />
+				<Song on:move song={item} />
 			{/each}
 		</div>
 	</div>

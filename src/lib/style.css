@@ -22,10 +22,6 @@ body {
   /* border: 1px solid crimson; */
 }
 
-.buttons-wrap {
-  display: flex;
-  justify-content: space-between;
-}
 .songlist,
 .setlist {
   width: 100%;
@@ -34,12 +30,6 @@ body {
   gap: 0.25rem;
   /* border: 1px solid #ffcc00; */
 }
-
-.buttons-wrap>label,
-.buttons-wrap>button {
-  width: 100%;
-}
-
 
 header {
   display: flex;
@@ -130,28 +120,6 @@ header h1 {
   gap: 0.25rem;
 }
 
-/* .prefs-wrapper {
-  position: relative;
-}
-.prefs {
-  position: absolute;
-  padding: 1rem 0.5rem;
-  top: 100%;
-  left: 0;
-  right: 0;
-  box-sizing: border-box;
-  border-radius: 0.25rem;
-  background-color: #ccc;
-  color: #000;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-} */
-
-/* svg {
-  max-width: 1rem;
-} */
-
 .btn:disabled {
   background-color: #ccc;
   cursor: default;
@@ -164,19 +132,7 @@ header h1 {
   padding: 0.25rem 0.25rem !important;
 }
 
-/* VERTICAL LIST */
 
-section {
-  margin: 1rem 0;
-  overflow: scroll;
-  /* min-height: 4rem; */
-  background-color: #666;
-}
-
-.inner {
-  padding: 0.2em;
-  margin: 0.15em 0;
-}
 .addsong-wrapper{
   position: relative;
 }
