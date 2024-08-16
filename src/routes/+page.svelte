@@ -5,11 +5,36 @@
   import Song from '$lib/Song2.svelte';
   import Sorter from "$lib/Sorter.svelte";
   import Info from "$lib/Info.svelte";
-  import { setlist, songlist } from '$lib/stores.js';
+  import EditSong from "$lib/EditSong.svelte";
+  import { setlist, songlist, ctrlPressed } from '$lib/stores.js';
   import { onMount } from 'svelte';
   import { loadMainSongCSV, getTotalDuration, formatDuration } from '$lib/utils.js';
-  import ContextMenu from '$lib/ContextMenu.svelte';
+  // import ContextMenu from '$lib/ContextMenu.svelte';
   
+  // function on_key_up({key, ctrlKey, repeat}) {
+  //   if(ctrlKey) {
+  //     $ctrlPressed = true;
+  //   } else {
+  //     $ctrlPressed = false;
+  //   }
+  // }
+  // function on_key_down({key, ctrlKey, repeat}) {       
+  //   if (repeat) return;
+  //   if(ctrlKey) {
+  //     $ctrlPressed = true;
+  //   } else {
+  //     $ctrlPressed = false;
+  //   }
+  //   // switch (key) {           
+  //   //   case "h":
+  //   //     if(ctrlKey) {
+  //   //       event.preventDefault();
+  //   //       on_bind();
+  //   //       break;
+  //   //     }
+  //   // }
+  // }
+
   onMount(async () => {
     const msl = await loadMainSongCSV();
     $songlist = msl.data.map((x, index) => {
@@ -18,6 +43,15 @@
       return {id, ...x}
     });
   });
+
+  let currentSong;
+  let showEdit = false;
+
+  function editsong(event) {
+    const song = event.detail.song;
+    currentSong = song;
+    showEdit = true;
+  }
 
   function move(event) {
     const s = event.detail.song;
@@ -33,14 +67,32 @@
 
   let searchTerm = "";
 	$: filtered = $songlist.filter((x) => x.title.toLowerCase().includes(searchTerm.toLowerCase()));
+
+
+
+  function updateSong(event) {
+    let song = event.detail.song;
+    console.log('updateSong: ', song);
+    let index = $songlist.findIndex(x => x.id === song.id);
+    $songlist[index] = song;
+  }
+
 </script>
 
-<ContextMenu />
+<!-- <ContextMenu /> -->
+ <!-- <svelte:window on:keydown={on_key_down} on:keyup={on_key_up} /> -->
+<!-- {#if $ctrlPressed}CTRL PRESSED{:else}&nbsp;{/if} -->
 <header>
   <h1>setlist thing</h1>
   <Controls />
   <Info />
+  {#if showEdit}
+  <EditSong song={currentSong} bind:showEdit on:updateSong={updateSong}/>
+  {/if}
 </header>
+
+
+
 
 <div class="cols">
   <div class="songlist">
@@ -55,7 +107,7 @@
       <Sorter bind:arr={$songlist} />
       <div class="innerlist">
         {#each filtered as song}
-          <Song on:move={move} song={song} />
+          <Song on:move={move} on:editsong={editsong} song={song} />
         {/each}
       </div>
     </div>
@@ -93,5 +145,10 @@
   .h2 {
     margin: 0 0 1rem 0;
     border-bottom: 1px solid #eee;
+  }
+  .r {
+    width: 100%;
+    display: inline-flex;
+    justify-content: flex-end;
   }
 </style>

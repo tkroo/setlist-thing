@@ -1,12 +1,15 @@
 <script>
-  let toggle = false;
+  export let toggle = false;
+  export let linkText;
   function toggleInfo() {
     toggle = !toggle;
   }
 </script>
 
 <div class="info-wrapper">
-  <button class="btn btn-link" on:click={toggleInfo}>info</button>
+  {#if linkText}
+  <button class="btn btn-link" on:click={toggleInfo}>{linkText}</button>
+  {/if}
   {#if toggle}
     <div class="info-backdrop">
       <div class="info-inner">

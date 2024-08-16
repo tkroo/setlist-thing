@@ -1,15 +1,19 @@
 <script>
   export let song;
+  import { longpress } from '$lib/actions.js'
   import { createEventDispatcher } from "svelte";
-
   const dispatch = createEventDispatcher();
+  
   function move() {
-    console.log('Song2 component', song);
     dispatch("move", { song });
+  }
+  
+  function editsong() {
+    dispatch("editsong", { song });
   }
 </script>
 
-<button class="song btn" on:click={move}>
+<button class="song btn" use:longpress on:longpress={editsong} on:click={move}>
   <span class="title">{song.title}</span>
   <span class="duration">{song.duration}</span>
   <span class="tuning">{song.tuning ? song.tuning : ''}</span>

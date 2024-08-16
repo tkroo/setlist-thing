@@ -1,12 +1,12 @@
 <script>
-  import { createEventDispatcher } from "svelte";
 	import { fade } from 'svelte/transition';
 	// import { flip } from 'svelte/animate';
 	import Song from '$lib/Song2.svelte';
 	import Sorter from "$lib/Sorter.svelte";
 	import { dndzone } from 'svelte-dnd-action';
   import { getTotalDuration } from '$lib/utils.js';
-  const dispatch = createEventDispatcher();
+  // import { createEventDispatcher } from "svelte";
+  // const dispatch = createEventDispatcher();
 
 	export let items;
 	const flipDurationMs = 60;

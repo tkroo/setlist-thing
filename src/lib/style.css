@@ -111,6 +111,7 @@ header h1 {
   border-color: transparent;
   color: #fff;
   text-decoration: underline;
+  padding: 0;
 }
 
 
@@ -159,6 +160,7 @@ table {
   text-indent: 0;
   text-align: left;
   border-collapse: collapse;
+  width: 100%;
 }
 
 tr {
@@ -197,4 +199,9 @@ td {
 }
 .heading {
   height: 2.5rem;
+}
+
+.nomnop {
+  margin: 0;
+  padding: 0;
 }
