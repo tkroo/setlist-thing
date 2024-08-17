@@ -1,4 +1,5 @@
 <script>
+  let foo;
   import VerticalList2 from '$lib/VerticalList2.svelte';
   import { fade } from 'svelte/transition';
   import Controls from '$lib/Controls.svelte';
@@ -9,33 +10,9 @@
   import { setlist, songlist, ctrlPressed } from '$lib/stores.js';
   import { onMount } from 'svelte';
   import { loadMainSongCSV, getTotalDuration, formatDuration } from '$lib/utils.js';
-  // import ContextMenu from '$lib/ContextMenu.svelte';
   
-  // function on_key_up({key, ctrlKey, repeat}) {
-  //   if(ctrlKey) {
-  //     $ctrlPressed = true;
-  //   } else {
-  //     $ctrlPressed = false;
-  //   }
-  // }
-  // function on_key_down({key, ctrlKey, repeat}) {       
-  //   if (repeat) return;
-  //   if(ctrlKey) {
-  //     $ctrlPressed = true;
-  //   } else {
-  //     $ctrlPressed = false;
-  //   }
-  //   // switch (key) {           
-  //   //   case "h":
-  //   //     if(ctrlKey) {
-  //   //       event.preventDefault();
-  //   //       on_bind();
-  //   //       break;
-  //   //     }
-  //   // }
-  // }
-
   onMount(async () => {
+    foo = import('$lib/long-press-event.js');
     const msl = await loadMainSongCSV();
     $songlist = msl.data.map((x, index) => {
       let id = index;
@@ -77,10 +54,20 @@
     $songlist[index] = song;
   }
 
+  function longpressed(e) {
+    e.preventDefault();
+    const id = e.target.closest('.song').dataset.id;
+    let index = $songlist.findIndex(x => x.id === parseInt(id));
+    if(index) {
+      showEdit = true;
+      currentSong = $songlist[index];
+    }
+  }
+
 </script>
 
 <!-- <ContextMenu /> -->
- <!-- <svelte:window on:keydown={on_key_down} on:keyup={on_key_up} /> -->
+ <svelte:window on:long-press={longpressed} />
 <!-- {#if $ctrlPressed}CTRL PRESSED{:else}&nbsp;{/if} -->
 <header>
   <h1>setlist thing</h1>
@@ -91,6 +78,10 @@
   {/if}
 </header>
 
+<hr>
+<div class="dock-item" data-long-press-delay="500">Press and hold me for .5s</div>
+<hr>
+
 
 
 
@@ -100,14 +91,14 @@
     <div class="heading">
       <input class="btn wide" type="search" name="search" bind:value={searchTerm} placeholder="search for a song">
       <input class="btn" type="reset" name="reset" value="X" alt="Clear the search vid" on:click={() => { searchTerm = ""}}>
-      <small>length: {getTotalDuration(filtered)} ({filtered.length} {filtered.length === 1 ? 'song' : 'songs'})</small>
+      <div class="info">length: {getTotalDuration(filtered)} ({filtered.length} {filtered.length === 1 ? 'song' : 'songs'})</div>
     </div>
     {#if filtered.length}
     <div class="nomnop" transition:fade={{ delay: 250, duration: 300 }}>
       <Sorter bind:arr={$songlist} />
       <div class="innerlist">
         {#each filtered as song}
-          <Song on:move={move} on:editsong={editsong} song={song} />
+          <Song data-long-press-delay="500" on:move={move} on:editsong={editsong} song={song} />
         {/each}
       </div>
     </div>
@@ -146,9 +137,39 @@
     margin: 0 0 1rem 0;
     border-bottom: 1px solid #eee;
   }
-  .r {
-    width: 100%;
-    display: inline-flex;
-    justify-content: flex-end;
+  .info {
+    display: inline-block;
+    font-size: 0.75rem;
   }
+  /* long-press-event */
+  .dock-item {
+  font-size: 14px;
+  font-family: arial;
+  display: inline-block;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  width: 70px;
+  height: 70px;
+  border-radius: 3px;
+  text-align: center;
+  user-select: none;
+}
+
+@keyframes jiggle {
+  0% {
+    transform: rotate(-1deg);
+  }
+  50% {
+    transform: rotate(1deg);
+  }
+}
+
+.dock-item[data-editing="true"] {
+  animation: jiggle 0.2s infinite;
+  border: 1px solid #aaa;
+  box-shadow: 0 0 1px rgba(0,0,0,.85);
+}
+  /* long-press-event */
 </style>

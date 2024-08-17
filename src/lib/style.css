@@ -198,7 +198,7 @@ td {
   }
 }
 .heading {
-  height: 2.5rem;
+  min-height: 2.5rem;
 }
 
 .nomnop {

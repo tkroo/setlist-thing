@@ -13,7 +13,8 @@
   }
 </script>
 
-<button class="song btn" use:longpress on:longpress={editsong} on:click={move}>
+<!-- <button class="song btn" use:longpress on:longpress={editsong} on:click={move}> -->
+<button class="song btn" data-id={song.id} on:click={move}>
   <span class="title">{song.title}</span>
   <span class="duration">{song.duration}</span>
   <span class="tuning">{song.tuning ? song.tuning : ''}</span>
