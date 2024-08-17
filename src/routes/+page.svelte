@@ -100,7 +100,7 @@
     <div class="heading">
       <input class="btn wide" type="search" name="search" bind:value={searchTerm} placeholder="search for a song">
       <input class="btn" type="reset" name="reset" value="X" alt="Clear the search vid" on:click={() => { searchTerm = ""}}>
-      length: {getTotalDuration(filtered)} ({filtered.length} {filtered.length === 1 ? 'song' : 'songs'})
+      <small>length: {getTotalDuration(filtered)} ({filtered.length} {filtered.length === 1 ? 'song' : 'songs'})</small>
     </div>
     {#if filtered.length}
     <div class="nomnop" transition:fade={{ delay: 250, duration: 300 }}>
