@@ -66,6 +66,9 @@
 
 </script>
 
+
+
+
 <!-- <ContextMenu /> -->
  <svelte:window on:long-press={longpressed} />
 <!-- {#if $ctrlPressed}CTRL PRESSED{:else}&nbsp;{/if} -->
@@ -77,13 +80,6 @@
   <EditSong song={currentSong} bind:showEdit on:updateSong={updateSong}/>
   {/if}
 </header>
-
-<hr>
-<div class="dock-item" data-long-press-delay="500">Press and hold me for .5s</div>
-<hr>
-
-
-
 
 <div class="cols">
   <div class="songlist">
