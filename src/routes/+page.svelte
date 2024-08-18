@@ -26,6 +26,7 @@
 
   function editsong(event) {
     const song = event.detail.song;
+    console.log('top level editsong() : ', song)
     currentSong = song;
     showEdit = true;
   }
@@ -52,26 +53,11 @@
     console.log('updateSong: ', song);
     let index = $songlist.findIndex(x => x.id === song.id);
     $songlist[index] = song;
-  }
-
-  function longpressed(e) {
-    e.preventDefault();
-    const id = e.target.closest('.song').dataset.id;
-    let index = $songlist.findIndex(x => x.id === parseInt(id));
-    if(index) {
-      showEdit = true;
-      currentSong = $songlist[index];
-    }
+    $setlist = $setlist;
   }
 
 </script>
 
-
-
-
-<!-- <ContextMenu /> -->
- <svelte:window on:long-press={longpressed} />
-<!-- {#if $ctrlPressed}CTRL PRESSED{:else}&nbsp;{/if} -->
 <header>
   <h1>setlist thing</h1>
   <Controls />
@@ -94,7 +80,7 @@
       <Sorter bind:arr={$songlist} />
       <div class="innerlist">
         {#each filtered as song}
-          <Song data-long-press-delay="500" on:move={move} on:editsong={editsong} song={song} />
+          <Song on:move={move} on:editsong={editsong} song={song} />
         {/each}
       </div>
     </div>
@@ -104,7 +90,7 @@
 
   <div class="setlist">
     <h2 class="h2">set list</h2>
-    <VerticalList2 on:move={move} bind:items={$setlist} />
+    <VerticalList2 on:move={move} on:editsong={editsong}  />
   </div>
 </div>
 
@@ -137,35 +123,4 @@
     display: inline-block;
     font-size: 0.75rem;
   }
-  /* long-press-event */
-  .dock-item {
-  font-size: 14px;
-  font-family: arial;
-  display: inline-block;
-  margin: 10px;
-  padding: 10px;
-  border: 1px solid #ccc;
-  cursor: pointer;
-  width: 70px;
-  height: 70px;
-  border-radius: 3px;
-  text-align: center;
-  user-select: none;
-}
-
-@keyframes jiggle {
-  0% {
-    transform: rotate(-1deg);
-  }
-  50% {
-    transform: rotate(1deg);
-  }
-}
-
-.dock-item[data-editing="true"] {
-  animation: jiggle 0.2s infinite;
-  border: 1px solid #aaa;
-  box-shadow: 0 0 1px rgba(0,0,0,.85);
-}
-  /* long-press-event */
 </style>

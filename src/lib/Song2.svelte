@@ -1,6 +1,6 @@
 <script>
   export let song;
-  import { longpress } from '$lib/actions.js'
+  import { doubleClk } from '$lib/actions.js'
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
   
@@ -13,8 +13,7 @@
   }
 </script>
 
-<!-- <button class="song btn" use:longpress on:longpress={editsong} on:click={move}> -->
-<button class="song btn" data-id={song.id} on:click={move}>
+<button class="song btn" data-id={song.id} use:doubleClk={{delay: 300}} on:sclick={move} on:dclick={editsong}>
   <span class="title">{song.title}</span>
   <span class="duration">{song.duration}</span>
   <span class="tuning">{song.tuning ? song.tuning : ''}</span>

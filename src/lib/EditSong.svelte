@@ -3,6 +3,7 @@
 </script>
 <script>
   export let showEdit;
+  import { setlist } from '$lib/stores.js';
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
   

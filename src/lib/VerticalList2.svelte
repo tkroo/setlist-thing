@@ -5,11 +5,11 @@
 	import Sorter from "$lib/Sorter.svelte";
 	import { dndzone } from 'svelte-dnd-action';
   import { getTotalDuration } from '$lib/utils.js';
-  // import { createEventDispatcher } from "svelte";
-  // const dispatch = createEventDispatcher();
-
-	export let items;
+	import { setlist } from '$lib/stores.js';
 	const flipDurationMs = 60;
+	let items;
+
+	$: $setlist && (items = [...$setlist]);
 	
 	function handleDndConsider(e) {
 		items = e.detail.items;
@@ -18,9 +18,6 @@
 	function handleDndFinalize(e) {
 		items = e.detail.items;
 	}
-
-  $: setDuration = getTotalDuration(items);
-
 </script>
 
 <div class="heading">
@@ -37,15 +34,8 @@
 		<Sorter bind:arr={items} />
 		<div class="innerlist" use:dndzone={{items, flipDurationMs}} on:consider={handleDndConsider} on:finalize={handleDndFinalize}>
 			{#each items as item(item.id)}
-				<Song on:move song={item} />
+				<Song on:move on:editsong on:dclick song={item} />
 			{/each}
 		</div>
 	</div>
 {/if}
-
-<style>
-	.nomnop {
-    margin: 0;
-    padding: 0;
-  }
-</style>
