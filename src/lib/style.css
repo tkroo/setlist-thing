@@ -56,7 +56,7 @@ header h1 {
   flex-direction: column;
   gap: 0.25rem;
   overflow: scroll;
-  height: 70vh;
+  /* height: 70vh; */
   margin-top: 0.25rem;
 }
 
