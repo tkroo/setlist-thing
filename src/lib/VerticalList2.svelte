@@ -23,7 +23,7 @@
 <div class="heading">
 	{#if items.length}
 		set length: {getTotalDuration(items)} ({items.length} {items.length === 1 ? 'song' : 'songs'})
-		<button class="btn" on:click={() => items=[]}>clear</button>
+		<button class="btn" on:click={() => $setlist=[]}>clear</button>
 		<button class="btn" on:click={() => items=items.reverse()}>reverse</button>
 	{:else}
 		click a song in the song list to start a set list

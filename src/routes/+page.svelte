@@ -1,5 +1,6 @@
 <script>
   let foo;
+  import VerticalList1 from '$lib/VerticalList1.svelte';
   import VerticalList2 from '$lib/VerticalList2.svelte';
   import { fade } from 'svelte/transition';
   import Controls from '$lib/Controls.svelte';
@@ -70,22 +71,7 @@
 <div class="cols">
   <div class="songlist">
     <h2 class="h2">songs list</h2>
-    <div class="heading">
-      <input class="btn wide" type="search" name="search" bind:value={searchTerm} placeholder="search for a song">
-      <input class="btn" type="reset" name="reset" value="X" alt="Clear the search vid" on:click={() => { searchTerm = ""}}>
-      <div class="info">length: {getTotalDuration(filtered)} ({filtered.length} {filtered.length === 1 ? 'song' : 'songs'})</div>
-    </div>
-    {#if filtered.length}
-    <div class="nomnop" transition:fade={{ delay: 250, duration: 300 }}>
-      <Sorter bind:arr={$songlist} />
-      <div class="innerlist">
-        {#each filtered as song}
-          <Song on:move={move} on:editsong={editsong} song={song} />
-        {/each}
-      </div>
-    </div>
-    {/if}
-    
+    <VerticalList1 on:move={move} on:editsong={editsong}  />
   </div>
 
   <div class="setlist">
@@ -102,25 +88,3 @@
   </ol>
 </div>
 
-
-<style>
-  /* form {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  } */
-  .wide {
-    cursor: text;
-    text-align: left;
-    flex-basis: 100%;
-    margin-right: 0.25rem;
-  }
-  .h2 {
-    margin: 0 0 1rem 0;
-    border-bottom: 1px solid #eee;
-  }
-  .info {
-    display: inline-block;
-    font-size: 0.75rem;
-  }
-</style>

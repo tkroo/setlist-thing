@@ -49,7 +49,6 @@ export function doubleClk(node, { delay }) {
 	function handleClickType() {
 		if (waiting) {
 			clearTimeout(timeout);
-			console.log('double clicked')
 			node.dispatchEvent(new CustomEvent('dclick', { detail: 'double' }));
 			waiting = false;
 			return;
