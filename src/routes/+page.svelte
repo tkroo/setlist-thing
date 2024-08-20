@@ -32,9 +32,9 @@
     showEdit = true;
   }
 
-  function move(event) {
+  function movesong(event) {
     const s = event.detail.song;
-    console.log('top level move() :',s);
+    console.log('top level movesong() :',s);
     if ($setlist.find(x => x.id === s.id)) {
       $setlist = $setlist.filter(x => x.id !== s.id);
       return;
@@ -44,11 +44,6 @@
     }
   }
 
-  let searchTerm = "";
-	$: filtered = $songlist.filter((x) => x.title.toLowerCase().includes(searchTerm.toLowerCase()));
-
-
-
   function updateSong(event) {
     let song = event.detail.song;
     console.log('updateSong: ', song);
@@ -57,8 +52,14 @@
     $setlist = $setlist;
   }
 
+  let searchTerm = "";
+	$: filtered = $songlist.filter((x) => x.title.toLowerCase().includes(searchTerm.toLowerCase()));
+
 </script>
 
+<svelte:head>
+  <title>setlist thing</title>
+</svelte:head>
 <header>
   <h1>setlist thing</h1>
   <Controls />
@@ -69,15 +70,15 @@
 </header>
 
 <div class="cols">
-  <div class="songlist">
+  <section class="songlist">
     <h2 class="h2">songs list</h2>
-    <VerticalList1 on:move={move} on:editsong={editsong}  />
-  </div>
+    <VerticalList1 on:movesong={movesong} on:editsong={editsong}  />
+  </section>
 
-  <div class="setlist">
+  <section class="setlist">
     <h2 class="h2">set list</h2>
-    <VerticalList2 on:move={move} on:editsong={editsong}  />
-  </div>
+    <VerticalList2 on:movesong={movesong} on:editsong={editsong}  />
+  </section>
 </div>
 
 <div id="SETLISTPRINT">

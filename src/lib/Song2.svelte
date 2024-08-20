@@ -4,8 +4,8 @@
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
   
-  function move() {
-    dispatch("move", { song });
+  function movesong() {
+    dispatch("movesong", { song });
   }
   
   function editsong() {
@@ -13,7 +13,7 @@
   }
 </script>
 
-<button class="song btn" data-id={song.id} use:doubleClk={{delay: 300}} on:sclick={move} on:dclick={editsong}>
+<button class="song btn" use:doubleClk={{delay: 300}} on:sclick={movesong} on:dclick={editsong}>
   <span class="title">{song.title}</span>
   <span class="duration">{song.duration}</span>
   <span class="tuning">{song.tuning ? song.tuning : ''}</span>
