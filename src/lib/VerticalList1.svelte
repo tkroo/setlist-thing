@@ -10,10 +10,8 @@
 	let items;
 
   let searchTerm = "";
-
 	
   $: filtered = $songlist.filter((x) => x.title.toLowerCase().includes(searchTerm.toLowerCase()));
-  
 	$: $songlist && (items = [...filtered]);
 	
 	function handleDndConsider(e) {
@@ -34,8 +32,8 @@
 
 {#if items.length}
 	<div class="nomnop" transition:fade={{ delay: 250, duration: 300 }}>
-		<Sorter bind:arr={items} />
-		<div class="innerlist" use:dndzone={{items, flipDurationMs}} on:consider={handleDndConsider} on:finalize={handleDndFinalize}>
+		<Sorter list="songlist" />
+		<div class="innerlist" aria-label="songslist" use:dndzone={{items, flipDurationMs}} on:consider={handleDndConsider} on:finalize={handleDndFinalize}>
 			{#each items as item(item.id)}
 				<Song on:movesong on:editsong on:dclick song={item} />
 			{/each}
@@ -50,10 +48,6 @@
     text-align: left;
     flex-basis: 100%;
     margin-right: 0.25rem;
-  }
-  .h2 {
-    margin: 0 0 1rem 0;
-    border-bottom: 1px solid #eee;
   }
   .info {
     display: inline-block;

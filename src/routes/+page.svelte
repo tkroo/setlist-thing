@@ -1,19 +1,14 @@
 <script>
-  let foo;
   import VerticalList1 from '$lib/VerticalList1.svelte';
   import VerticalList2 from '$lib/VerticalList2.svelte';
-  import { fade } from 'svelte/transition';
   import Controls from '$lib/Controls.svelte';
-  import Song from '$lib/Song2.svelte';
-  import Sorter from "$lib/Sorter.svelte";
   import Info from "$lib/Info.svelte";
   import EditSong from "$lib/EditSong.svelte";
-  import { setlist, songlist, ctrlPressed } from '$lib/stores.js';
+  import { setlist, songlist } from '$lib/stores.js';
   import { onMount } from 'svelte';
-  import { loadMainSongCSV, getTotalDuration, formatDuration } from '$lib/utils.js';
+  import { loadMainSongCSV, formatDuration } from '$lib/utils.js';
   
   onMount(async () => {
-    foo = import('$lib/long-press-event.js');
     const msl = await loadMainSongCSV();
     $songlist = msl.data.map((x, index) => {
       let id = index;

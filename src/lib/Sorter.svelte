@@ -1,14 +1,22 @@
 <script>
   import { sortByKey } from '$lib/utils.js';
-  export let arr;
+  export let items;
+  import { setlist, songlist } from '$lib/stores.js';
+  export let list = 'songlist';
 
   let directionToggle = false;
 	function sortMe(key) {
     console.log('Sorter: ',key);
 		directionToggle = !directionToggle;
-		let tmp = sortByKey(arr, key, directionToggle);
-		arr = [...tmp];
+    if(list == 'setlist') {
+      $setlist = sortByKey($setlist, key, directionToggle);
+    } else {
+      $songlist = sortByKey($songlist, key, directionToggle);
+    }
+		// let tmp = sortByKey(items, key, directionToggle);
+		// items = [...tmp];
 	}
+
   let keys = ['title', 'duration', 'tuning'];
 </script>
 

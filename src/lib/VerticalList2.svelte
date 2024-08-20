@@ -31,7 +31,7 @@
 </div>
 {#if items.length}
 	<div class="nomnop" transition:fade={{ delay: 250, duration: 300 }}>
-		<Sorter bind:arr={items} />
+		<Sorter list='setlist' />
 		<div class="innerlist" use:dndzone={{items, flipDurationMs}} on:consider={handleDndConsider} on:finalize={handleDndFinalize}>
 			{#each items as item(item.id)}
 				<Song on:movesong on:editsong on:dclick song={item} />
