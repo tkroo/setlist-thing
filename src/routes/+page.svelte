@@ -9,7 +9,7 @@
   import { loadMainSongCSV, formatDuration } from '$lib/utils.js';
   
   onMount(async () => {
-    const msl = await loadMainSongCSV();
+    const msl = await loadMainSongCSV('/songlist.csv');
     $songlist = msl.data.map((x, index) => {
       let id = index;
       x.duration = formatDuration(x.duration)

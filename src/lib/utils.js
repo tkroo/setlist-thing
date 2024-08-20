@@ -45,8 +45,8 @@ export const papaReadCSV = async (input) => {
 	});
 }
 
-export const loadMainSongCSV = async () => {
-	const response = await fetch('/songlist.csv');
+export const loadMainSongCSV = async (file) => {
+	const response = await fetch(file);
 	const text = await response.text();
 	return papa.parse(text, {
 		header: true,

@@ -1,6 +1,5 @@
 <script>
   import { sortByKey } from '$lib/utils.js';
-  export let items;
   import { setlist, songlist } from '$lib/stores.js';
   export let list = 'songlist';
 
@@ -13,8 +12,6 @@
     } else {
       $songlist = sortByKey($songlist, key, directionToggle);
     }
-		// let tmp = sortByKey(items, key, directionToggle);
-		// items = [...tmp];
 	}
 
   let keys = ['title', 'duration', 'tuning'];

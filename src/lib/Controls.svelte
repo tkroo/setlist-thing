@@ -4,20 +4,6 @@
   import FileInput from '$lib/FileInput.svelte';
   import AddSong from '$lib/AddSong.svelte';
 
-  // function readFile(event, list) {
-  //   const reader = new FileReader();
-  //   reader.onload = async(event) => {
-  //     let tmp = await papaReadCSV(event.target.result);
-  //     if(list == 'setlist') {
-  //       $setlist = tmp.data.map((x, index) => ({id:index, ...x}));
-  //     } else {
-  //       $songlist = tmp.data.map((x, index) => ({id:index, ...x}));
-  //     }
-  //   }
-  //   const file = event.target.files[0];
-  //   reader.readAsText(file);
-  // }
-
   function cleanUp(data) {
     return data.map(x => ({title:x.title.trim(), duration:x.duration.trim(), tuning:x.tuning.trim()}));
   }
@@ -27,7 +13,6 @@
     reader.onload = async(event) => {
       let tmp = await papaReadCSV(event.target.result);
       tmp.data = cleanUp(tmp.data);
-      console.log('tmp: ', tmp);
       if(list == 'setlist') {
         $setlist = tmp.data.map((x, index) => ({id:index, ...x}));
       } else {
