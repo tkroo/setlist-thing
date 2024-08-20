@@ -18,16 +18,3 @@
   <span class="duration">{song.duration}</span>
   <span class="tuning">{song.tuning ? song.tuning : ''}</span>
 </button>
-
-<style>
-  .title {
-    text-align: left;
-  }
-
-  .btn {
-    outline: 0;
-    cursor: pointer !important;
-    border: 1px solid transparent;
-    border-radius: 0.25rem;
-  }
-</style>
