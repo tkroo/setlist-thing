@@ -1,6 +1,6 @@
 <script>
-  import VerticalList1 from '$lib/VerticalList1.svelte';
-  import VerticalList2 from '$lib/VerticalList2.svelte';
+  import SongsList from '$lib/SongsList.svelte';
+  import SetList from '$lib/SetList.svelte';
   import Controls from '$lib/Controls.svelte';
   import Info from "$lib/Info.svelte";
   import EditSong from "$lib/EditSong.svelte";
@@ -67,12 +67,12 @@
 <div class="cols">
   <section class="songlist">
     <h2 class="h2">songs list</h2>
-    <VerticalList1 on:movesong={movesong} on:editsong={editsong}  />
+    <SongsList on:movesong={movesong} on:editsong={editsong}  />
   </section>
 
   <section class="setlist">
     <h2 class="h2">set list</h2>
-    <VerticalList2 on:movesong={movesong} on:editsong={editsong}  />
+    <SetList on:movesong={movesong} on:editsong={editsong}  />
   </section>
 </div>
 

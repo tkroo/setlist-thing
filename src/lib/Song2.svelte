@@ -26,7 +26,7 @@
 
   .btn {
     outline: 0;
-    cursor: pointer;
+    cursor: pointer !important;
     border: 1px solid transparent;
     border-radius: 0.25rem;
   }
